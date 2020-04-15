@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}ADCP List{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>ADCPs</h1>
+    <ul class="list-group">
+    {% for adcp in adcps %}
+        <li class="list-group-item">
+            <div class="jumbotron">
+                <h1 class="display-20">{{ adcp.SerialNumber|e }}</h1>
+                <h5>{{ adcp.Customer }}</h5>
+                <hr class="my-4">
+                <a class="btn btn-primary btn-lg" href="/adcp/{{adcp.SerialNumber}}" role="button">Learn more</a>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
